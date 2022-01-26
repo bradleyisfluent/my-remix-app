@@ -27,8 +27,15 @@ export const action: ActionFunction = async ({ request }) => {
 
 export const loader = async () => {
 	const graphql = new GraphQLClient('http://localhost:1337/graphql');
-	const { landing } = await graphql.request(GetHomePage);
-	return landing;
+	let data = {};
+	try {
+		const resp = await graphql.request(GetHomePage);
+		console.log(data);
+		data = resp.landing;
+	} catch (err) {
+		console.log(err);
+	}
+	return data;
 };
 
 export type Landing = {
@@ -43,8 +50,8 @@ export default function Index() {
 			<Form method="post">
 				<Button type="submit">Change Theme</Button>
 			</Form>
-			<Heading>{data.heading}</Heading>
-			<Paragraph>{data.standfirst}</Paragraph>
+			<Heading>{data.heading || 'Default Heading'}</Heading>
+			<Paragraph>{data.standfirst || 'Static content'}</Paragraph>
 		</>
 	);
 }
