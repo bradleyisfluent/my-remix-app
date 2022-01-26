@@ -1,0 +1,12 @@
+:root,
+.t-cIBkYY {
+	--colors-text: #191919;
+	--colors-bgBody: #f8f9fa;
+	--colors-anchor: DarkGoldenRod;
+}
+
+.dark {
+	--colors-text: #f8f9fa;
+	--colors-bgBody: #191919;
+	--colors-anchor: BlanchedAlmond;
+}
